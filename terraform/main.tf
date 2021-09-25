@@ -1,8 +1,8 @@
 terraform {
   backend "azurerm" {
     resource_group_name  = "tamopstfstates"
-    storage_account_name = "tfstatedevops"
-    container_name       = "terraformgithubexample"
+    storage_account_name = "tamopstg"
+    container_name       = "tfstatedevops"
     key                  = "terraformgithubexample.tfstate"
   }
 }
@@ -19,14 +19,14 @@ data "azurerm_client_config" "current" {}
 #Create Resource Group
 resource "azurerm_resource_group" "tamops" {
   name     = "tamops"
-  location = "eastus2"
+  location = "uksouth"
 }
 
 #Create Virtual Network
 resource "azurerm_virtual_network" "vnet" {
   name                = "tamops-vnet"
   address_space       = ["192.168.0.0/16"]
-  location            = "eastus2"
+  location            = "uksouth"
   resource_group_name = azurerm_resource_group.tamops.name
 }
 
