@@ -37,4 +37,4 @@ resource "azurerm_subnet" "subnet" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefix       = "192.168.0.0/24"
 }
-  
+
