@@ -32,16 +32,11 @@ jobs:
           terraform_version: 1.0.2
 
       - name: Terraform Init
-        run: terraform init
-        with:
-          args: 'var-file="dev.tfvars"'
+        run: terraform init -backend-config="key=dev/terraform.tfstate" -backend-config="storage_account_name=terraformagrzvsa" -backend-config="container_name=dev-tfstate"
 
       - name: Terraform Plan
-        run: terraform plan
-        with:
-          args: 'var-file="dev.tfvars"'
+        run: terraform plan -var-file="dev.tfvars"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
-        with:
-          args: 'var-file="dev.tfvars"'
+        run: terraform apply -var-file="dev.tfvars" -auto-approve
+  
