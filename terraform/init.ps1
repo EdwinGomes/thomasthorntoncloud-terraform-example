@@ -1,1 +1,0 @@
-terraform init -backend-config="key=dev/terraform.tfstate" -backend-config="storage_account_name=terraformagrzvsa" -backend-config="container_name=dev-tfstate"
