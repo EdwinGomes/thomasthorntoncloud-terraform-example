@@ -28,7 +28,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: 'Terraform Format'
-      uses: hashicorp/terraform-github-actions@master
+      uses: hashicorp/setup-terraform@v1
       with:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'fmt'
@@ -36,7 +36,7 @@ jobs:
         args: '-var-file="dev.tfvars"'
         
     - name: 'Terraform Init'
-      uses: hashicorp/terraform-github-actions@master
+      uses: hashicorp/setup-terraform@v1
       with:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'init'
@@ -44,7 +44,7 @@ jobs:
         args: '-var-file="dev.tfvars"'
 
     - name: 'Terraform Validate'
-      uses: hashicorp/terraform-github-actions@master
+      uses: hashicorp/setup-terraform@v1
       with:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'validate'
@@ -52,7 +52,7 @@ jobs:
         args: '-var-file="dev.tfvars"'
         
     - name: 'Terraform Plan'
-      uses: hashicorp/terraform-github-actions@master
+      uses: hashicorp/setup-terraform@v1
       with:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'plan'
@@ -61,7 +61,7 @@ jobs:
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main'
-      uses: hashicorp/terraform-github-actions@master
+      uses: hashicorp/setup-terraform@v1
       with:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'apply'
