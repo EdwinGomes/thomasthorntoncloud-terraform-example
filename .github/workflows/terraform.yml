@@ -21,19 +21,18 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ./terraform
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.2
 
       - name: Terraform Init
         run: terraform init
-        
-        with: 
-          tf_actions_working_dir: ./terraform
-          args: 'var-file="dev.tfvars"'
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
