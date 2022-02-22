@@ -20,6 +20,7 @@ jobs:
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
+        working-directory: ./terraform
         shell: bash
 
     steps:
@@ -30,6 +31,9 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        with: 
+          tf_actions_working_dir: ./terraform
+          args: 'var-file="dev.tfvars"'
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
