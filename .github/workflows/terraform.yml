@@ -33,6 +33,15 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        with:
+          args: 'var-file="dev.tfvars"'
+
+      - name: Terraform Plan
+        run: terraform plan
+        with:
+          args: 'var-file="dev.tfvars"'
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        with:
+          args: 'var-file="dev.tfvars"'
