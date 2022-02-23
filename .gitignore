@@ -33,4 +33,6 @@ override.tf.json
 terraform.rc
 
 # Ignore PowerShell files
-.ps1
+login.ps1
+init.ps1
+plan.ps1
